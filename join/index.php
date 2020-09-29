@@ -12,6 +12,11 @@ if ($_POST['password'] ==='') {
 	$error['password'] = 'blank';
 }
 
+if (empty($error)) {
+	header('loction: check.php');
+	exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
