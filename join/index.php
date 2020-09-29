@@ -1,21 +1,24 @@
 <?php
-if ($_POST['name'] ==='') {
+if (!empty($_POST)) {
+	if ($_POST['name'] ==='') {
 		$error['name'] = 'blank';
-}
-if ($_POST['email'] ==='') {
-	$error['email'] = 'blank';
-}
-if (strlen($_POST['password']) < 4) {
-		$error['password'] = 'length';
-}
-if ($_POST['password'] ==='') {
-	$error['password'] = 'blank';
+	}
+	if ($_POST['email'] ==='') {
+		$error['email'] = 'blank';
+	}
+	if (strlen($_POST['password']) < 4) {
+			$error['password'] = 'length';
+	}
+	if ($_POST['password'] ==='') {
+		$error['password'] = 'blank';
+	}
+
+	if (empty($error)) {
+		header('location: check.php');
+		exit();
+	}
 }
 
-if (empty($error)) {
-	header('loction: check.php');
-	exit();
-}
 
 ?>
 <!DOCTYPE html>
