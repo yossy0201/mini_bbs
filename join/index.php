@@ -22,7 +22,8 @@ if (!empty($_POST)) {
 	}
 }
 
-if ($_REQUEST['action'] == 'rewrite') {
+if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION
+['join'])) {
 	$_POST = $_SESSION['join'];
 }
 
