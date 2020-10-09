@@ -30,6 +30,8 @@ if (!isset($_SESSION['join'])) {
 	<dl>
 		<dt>ニックネーム</dt>
 		<dd>
+		<php? print(htmlspecialchars($_SESSION['join']
+		['name'], ENT_QUOTES)); ?>
         </dd>
 		<dt>メールアドレス</dt>
 		<dd>
