@@ -3,7 +3,6 @@ session_start();
 require('../dbconnect.php');
 
 if (!isset($_SESSION['join'])) {
-
 		header('Location: index.php');
 		exit();
 }
@@ -18,9 +17,9 @@ if (!empty($_POST)) {
 			sha1($_SESSION['join']['password']),
 			$_SESSION['join']['image'],
 		));
-		//上記で登録したDB情報を重複しないように削除する
+		//上記でDBへ登録した情報を下記のSESSION変数で重複登録しないようにSESSION変数をunsetで削除する
 		unset($_SESSION['join']);
-		
+		//Locatin: thanks.phpで会員登録後にthanks.php画面に遷移するようにする
 		header('Location: thanks.php');
 		exit();
 }
