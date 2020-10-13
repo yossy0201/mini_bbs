@@ -32,6 +32,7 @@ if (!empty($_POST)) {
 		FROM members WHERE email=?');
 		$_member->execute(array($_POST['email']));
 		$record = $member->fetch();
+		//DBの内容が0以上であればエラーメッセージを表示する
 		if ($record['cnt'] > 0) {
 			  $error['email'] = 'duplicate';
 		}
