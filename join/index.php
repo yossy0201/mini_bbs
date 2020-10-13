@@ -29,7 +29,9 @@ if (!empty($_POST)) {
 	//アカウントの重複をチェック
 	if(empty($error)) {
 		$_member = $db->prepare('SELECT COUNT(*)AS cnt
-		FROM members WHERE email=?')
+		FROM members WHERE email=?');
+		$_member->execute(array($_POST['email']));
+		$record = $member->fetch();
 	}
 
 	if (empty($error)) {
