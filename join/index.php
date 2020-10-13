@@ -32,6 +32,9 @@ if (!empty($_POST)) {
 		FROM members WHERE email=?');
 		$_member->execute(array($_POST['email']));
 		$record = $member->fetch();
+		if ($record['cnt'] > 0) {
+			  $error['email'] = 'duplicate';
+		}
 	}
 
 	if (empty($error)) {
@@ -86,6 +89,9 @@ if ($_REQUEST['action'] == 'rewrite' && isset($_SESSION['join'])) {
 					ENT_QUOTES)); ?>" />
 					<?php if ($error['email'] === 'blank'): ?>
 					<p class="error">* メールアドレスを入力してください</p>
+					<?php endif; ?>
+					<?php if ($error['email'] === 'duplicate'): ?>
+					<p class="error">* 指定されたメールアドレスは、既に登録されています</p>
 					<?php endif; ?>
 		<dt>パスワード<span class="required">必須</span></dt>
 		<dd>
